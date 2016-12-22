@@ -106,7 +106,7 @@ public class Main {
                             if (quitControl == 1) {
                                 System.out.println("-------------------------------");
                             } else if (quitControl == 3) {
-                                System.out.println("Fin");
+                                System.out.println("End");
                                 control = 1;
                                 break;
                             } else {
@@ -114,7 +114,7 @@ public class Main {
                             }
                         }
                     } else if (quitControl == 3) {
-                        System.out.println("Fin");
+                        System.out.println("End");
                         break;
                     } else {
                         System.out.println("Input 1 to enter another number, 2 to convert your input to octal, or 3 to quit the program. ");
@@ -134,7 +134,7 @@ public class Main {
                             if (quitControl == 1) {
                                 System.out.println("-------------------------------");
                             } else if (quitControl == 3) {
-                                System.out.println("Fin");
+                                System.out.println("End");
                                 control = 1;
                                 break;
                             } else {
@@ -142,7 +142,7 @@ public class Main {
                             }
                         }
                     } else if (quitControl == 3) {
-                        System.out.println("Fin");
+                        System.out.println("End");
                         break;
                     } else {
                         System.out.println("Input 1 to enter another number, 2 to convert your input to binary, or 3 to quit the program. ");
