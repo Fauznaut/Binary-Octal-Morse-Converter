@@ -13,9 +13,8 @@ public class Main {
     }
 
     public static int binaryOrOctal() {
-        System.out.print("Convert to Binary(1) or Octal(2)?");
-        int binaryOrOctal = scan.nextInt();
-        return binaryOrOctal;
+        System.out.print("Convert to Binary(1) or Octal(2)? ");
+        return scan.nextInt();
     }
 
     public static void convertToBinary(int x) {
@@ -94,14 +93,14 @@ public class Main {
                 control = binaryOrOctal();
                 if (control == 1) {
                     convertToBinary(input);
-                    System.out.print("Enter another number(1), convert to Octal(2), or quit(3)?");
+                    System.out.print("Enter another number(1), convert to Octal(2), or quit(3)? ");
                     quitControl = scan.nextInt();
                     if (quitControl == 1) {
                         System.out.println("-------------------------------");
                         break;
                     } else if (quitControl == 2) {
                         convertToOctal(input);
-                        System.out.print("Enter another number(1) or quit(3)?");
+                        System.out.print("Enter another number(1) or quit(3)? ");
                         while (quitControl != 1 && quitControl != 3) {
                             quitControl = scan.nextInt();
                             if (quitControl == 1) {
@@ -118,18 +117,18 @@ public class Main {
                         System.out.println("Fin");
                         break;
                     } else {
-                        System.out.println("Input 1 to enter another number, 2 to convert your input to octal, or 3 to quit the program.");
+                        System.out.println("Input 1 to enter another number, 2 to convert your input to octal, or 3 to quit the program. ");
                     }
                 } else if (control == 2) {
                     convertToOctal(input);
-                    System.out.print("Enter another number(1), convert to binary(2), or quit(3)?");
+                    System.out.print("Enter another number(1), convert to binary(2), or quit(3)? ");
                     quitControl = scan.nextInt();
                     if (quitControl == 1) {
                         System.out.println("-------------------------------");
                         break;
                     } else if (quitControl == 2) {
                         convertToBinary(input);
-                        System.out.print("Enter another number(1) or quit(3)?");
+                        System.out.print("Enter another number(1) or quit(3)? ");
                         while (quitControl != 1 && quitControl != 3) {
                             quitControl = scan.nextInt();
                             if (quitControl == 1) {
@@ -146,11 +145,11 @@ public class Main {
                         System.out.println("Fin");
                         break;
                     } else {
-                        System.out.println("Input 1 to enter another number, 2 to convert your input to binary, or 3 to quit the program.");
+                        System.out.println("Input 1 to enter another number, 2 to convert your input to binary, or 3 to quit the program. ");
                     }
                     break;
                 } else {
-                    System.out.println("Input 1 for Binary and 2 for Octal.");
+                    System.out.println("Input 1 for Binary and 2 for Octal. ");
                 }
             }
         }
