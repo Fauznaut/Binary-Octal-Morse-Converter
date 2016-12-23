@@ -12,8 +12,8 @@ public class Main {
         return input;
     }
 
-    public static int binaryOrOctal() {
-        System.out.print("Convert to Binary(1) or Octal(2)? ");
+    public static int binaryOrMorseOrOctal() {
+        System.out.print("Convert to Binary(1), Octal(2), or Morse(3)? ");
         return scan.nextInt();
     }
 
@@ -81,73 +81,240 @@ public class Main {
         System.out.println();
     }
 
+    public static void convertToMorse(int x) {
+        String[] morseArray = new String[14];
+        String inputAsString = Integer.toString(x);
+        inputAsString = inputAsString.replace("1", ".----");
+        inputAsString = inputAsString.replace("2", "..---");
+        inputAsString = inputAsString.replace("3", "...--");
+        inputAsString = inputAsString.replace("4", "....-");
+        inputAsString = inputAsString.replace("5", ".....");
+        inputAsString = inputAsString.replace("6", "-....");
+        inputAsString = inputAsString.replace("7", "--...");
+        inputAsString = inputAsString.replace("8", "---..");
+        inputAsString = inputAsString.replace("9", "----.");
+        inputAsString = inputAsString.replace("0", "-----");
+        System.out.println("Morse:");
+        System.out.println(inputAsString);
+    }
+
     public static void main(String[] args) {
         int input = 0;
         int quitControl = 0;
-        while (quitControl != 3) {
+        while (quitControl != 4) {
             int control = 0;
             input = getInput();
             if (input == 69)
                 System.out.println("Haha nice.");
-            while (control != 1 && control != 2) {
-                control = binaryOrOctal();
+            while (control != 1 && control != 2 && control != 3) {
+                control = binaryOrMorseOrOctal();
                 if (control == 1) {
                     convertToBinary(input);
-                    System.out.print("Enter another number(1), convert to Octal(2), or quit(3)? ");
-                    quitControl = scan.nextInt();
-                    if (quitControl == 1) {
-                        System.out.println("-------------------------------");
-                        break;
-                    } else if (quitControl == 2) {
-                        convertToOctal(input);
-                        System.out.print("Enter another number(1) or quit(3)? ");
-                        while (quitControl != 1 && quitControl != 3) {
-                            quitControl = scan.nextInt();
-                            if (quitControl == 1) {
-                                System.out.println("-------------------------------");
-                            } else if (quitControl == 3) {
-                                System.out.println("End");
-                                control = 1;
-                                break;
-                            } else {
-                                System.out.print("Input 1 to enter another number or 3 to quit the program: ");
+                    System.out.print("Enter another number(1), convert to Octal(2), convert to Morse(3), or quit(4)? ");
+                    while (quitControl != 1 && quitControl != 2 && quitControl != 3 && quitControl != 4) {
+                        quitControl = scan.nextInt();
+                        if (quitControl == 1) {
+                            System.out.println("-------------------------------");
+                            break;
+                        } else if (quitControl == 2) {
+                            convertToOctal(input);
+                            System.out.print("Enter another number(1), convert to Morse(2), or quit(4)? ");
+                            while (quitControl != 1 && quitControl != 3 && quitControl != 4) {
+                                quitControl = scan.nextInt();
+                                if (quitControl == 1) {
+                                    System.out.println("-------------------------------");
+                                } else if (quitControl == 2) {
+                                    convertToMorse(input);
+                                    System.out.print("Enter another number(1) or quit(4)? ");
+                                    while (quitControl != 1 && quitControl != 4) {
+                                        quitControl = scan.nextInt();
+                                        if (quitControl == 1) {
+                                            System.out.println("-------------------------------");
+                                            break;
+                                        } else if (quitControl == 4) {
+                                            System.out.println("End");
+                                            control = 1;
+                                            break;
+                                        } else {
+                                            System.out.print("Input 1 to enter another number or 4 to quit the program: ");
+                                        }
+                                    }
+                                } else if (quitControl == 4) {
+                                    System.out.println("End");
+                                    control = 1;
+                                    break;
+                                } else {
+                                    System.out.print("Input 1 to enter another number, 3 to convert to Morse, or 4 to quit the program: ");
+                                }
                             }
+                        } else if (quitControl == 3) {
+                            convertToMorse(input);
+                            System.out.print("Enter another number(1), convert to Octal(2), or quit(4)? ");
+                            while (quitControl != 1 && quitControl != 2 && quitControl != 4) {
+                                quitControl = scan.nextInt();
+                                if (quitControl == 1) {
+                                    System.out.println("-------------------------------");
+                                } else if (quitControl == 2) {
+                                    convertToOctal(input);
+                                    System.out.print("Enter another number(1) or quit(4)? ");
+                                    while (quitControl != 1 && quitControl != 4) {
+                                        quitControl = scan.nextInt();
+                                        if (quitControl == 1) {
+                                            System.out.println("-------------------------------");
+                                            break;
+                                        } else if (quitControl == 4) {
+                                            System.out.println("End");
+                                            control = 1;
+                                            break;
+                                        } else {
+                                            System.out.print("Input 1 to enter another number or 4 to quit the program: ");
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (quitControl == 4) {
+                            System.out.println("End");
+                            break;
+                        } else {
+                            System.out.print("Input 1 to enter another number, 2 to convert your input to octal, 3 to convert your input to Morse, or 4 to quit the program. ");
                         }
-                    } else if (quitControl == 3) {
-                        System.out.println("End");
-                        break;
-                    } else {
-                        System.out.println("Input 1 to enter another number, 2 to convert your input to octal, or 3 to quit the program. ");
                     }
                 } else if (control == 2) {
                     convertToOctal(input);
-                    System.out.print("Enter another number(1), convert to binary(2), or quit(3)? ");
-                    quitControl = scan.nextInt();
-                    if (quitControl == 1) {
-                        System.out.println("-------------------------------");
-                        break;
-                    } else if (quitControl == 2) {
-                        convertToBinary(input);
-                        System.out.print("Enter another number(1) or quit(3)? ");
-                        while (quitControl != 1 && quitControl != 3) {
-                            quitControl = scan.nextInt();
-                            if (quitControl == 1) {
-                                System.out.println("-------------------------------");
-                            } else if (quitControl == 3) {
-                                System.out.println("End");
-                                control = 1;
-                                break;
-                            } else {
-                                System.out.print("Input 1 to enter another number or 3 to quit the program: ");
+                    System.out.print("Enter another number(1), convert to Binary(2), convert to Morse(3), or quit(4)? ");
+                    while (quitControl != 1 && quitControl != 2 && quitControl != 3 && quitControl != 4) {
+                        quitControl = scan.nextInt();
+                        if (quitControl == 1) {
+                            System.out.println("-------------------------------");
+                            break;
+                        } else if (quitControl == 2) {
+                            convertToBinary(input);
+                            System.out.print("Enter another number(1), convert to Morse(2), or quit(4)? ");
+                            while (quitControl != 1 && quitControl != 4) {
+                                quitControl = scan.nextInt();
+                                if (quitControl == 1) {
+                                    System.out.println("-------------------------------");
+                                } else if (quitControl == 2) {
+                                    convertToMorse(input);
+                                    System.out.print("Enter another number(1) or quit(4)? ");
+                                    while (quitControl != 1 && quitControl != 4) {
+                                        quitControl = scan.nextInt();
+                                        if (quitControl == 1) {
+                                            System.out.println("-------------------------------");
+                                            break;
+                                        } else if (quitControl == 4) {
+                                            System.out.println("End");
+                                            break;
+                                        } else {
+                                            System.out.print("Input 1 to enter another number or 4 to quit the program: ");
+                                        }
+                                    }
+                                } else if (quitControl == 4) {
+                                    System.out.println("End");
+                                    break;
+                                } else {
+                                    System.out.print("Input 1 to enter another number, 2 to convert to Binary, 3 to convert to Morse, or 4 to quit the program: ");
+                                }
                             }
+                        } else if (quitControl == 3) {
+                            convertToMorse(input);
+                            System.out.print("Enter another number(1), convert to Binary(2), or quit(4)? ");
+                            while (quitControl != 1 && quitControl != 2 && quitControl != 4) {
+                                quitControl = scan.nextInt();
+                                if (quitControl == 1) {
+                                    System.out.println("-------------------------------");
+                                } else if (quitControl == 2) {
+                                    convertToBinary(input);
+                                    System.out.print("Enter another number(1) or quit(4)? ");
+                                    while (quitControl != 1 && quitControl != 4) {
+                                        quitControl = scan.nextInt();
+                                        if (quitControl == 1) {
+                                            System.out.println("-------------------------------");
+                                            break;
+                                        } else if (quitControl == 4) {
+                                            System.out.println("End");
+                                            break;
+                                        } else {
+                                            System.out.print("Input 1 to enter another number or 4 to quit the program: ");
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (quitControl == 4) {
+                            System.out.println("End");
+                            break;
+                        } else {
+                            System.out.println("Input 1 to enter another number, 2 to convert your input to Binary, 3 to convert your input to Morse, or 4 to quit the program. ");
                         }
-                    } else if (quitControl == 3) {
-                        System.out.println("End");
-                        break;
-                    } else {
-                        System.out.println("Input 1 to enter another number, 2 to convert your input to binary, or 3 to quit the program. ");
                     }
-                    break;
+                } else if (control == 3) {
+                    convertToMorse(input);
+                    System.out.print("Enter another number(1), convert to Binary(2), convert to Octal(3), or quit(4)? ");
+                    while (quitControl != 1 && quitControl != 2 && quitControl != 3 && quitControl != 4) {
+                        quitControl = scan.nextInt();
+                        if (quitControl == 1) {
+                            System.out.println("-------------------------------");
+                            break;
+                        } else if (quitControl == 2) {
+                            convertToBinary(input);
+                            System.out.print("Enter another number(1), convert to Octal(2), or quit(4)? ");
+                            while (quitControl != 1 && quitControl != 4) {
+                                quitControl = scan.nextInt();
+                                if (quitControl == 1) {
+                                    System.out.println("-------------------------------");
+                                } else if (quitControl == 2) {
+                                    convertToOctal(input);
+                                    System.out.print("Enter another number(1) or quit(4)? ");
+                                    while (quitControl != 1 && quitControl != 4) {
+                                        quitControl = scan.nextInt();
+                                        if (quitControl == 1) {
+                                            System.out.println("-------------------------------");
+                                            break;
+                                        } else if (quitControl == 4) {
+                                            System.out.println("End");
+                                            break;
+                                        } else {
+                                            System.out.print("Input 1 to enter another number or 4 to quit the program: ");
+                                        }
+                                    }
+                                } else if (quitControl == 4) {
+                                    System.out.println("End");
+                                    break;
+                                } else {
+                                    System.out.print("Input 1 to enter another number, 2 to convert to Binary, 3 to convert to Morse, or 4 to quit the program: ");
+                                }
+                            }
+                        } else if (quitControl == 3) {
+                            convertToOctal(input);
+                            System.out.print("Enter another number(1), convert to Binary(2), or quit(4)? ");
+                            while (quitControl != 1 && quitControl != 2 && quitControl != 4) {
+                                quitControl = scan.nextInt();
+                                if (quitControl == 1) {
+                                    System.out.println("-------------------------------");
+                                } else if (quitControl == 2) {
+                                    convertToBinary(input);
+                                    System.out.print("Enter another number(1) or quit(4)? ");
+                                    while (quitControl != 1 && quitControl != 4) {
+                                        quitControl = scan.nextInt();
+                                        if (quitControl == 1) {
+                                            System.out.println("-------------------------------");
+                                            break;
+                                        } else if (quitControl == 4) {
+                                            System.out.println("End");
+                                            break;
+                                        } else {
+                                            System.out.print("Input 1 to enter another number or 4 to quit the program: ");
+                                        }
+                                    }
+                                }
+                            }
+                        } else if (quitControl == 4) {
+                            System.out.println("End");
+                            break;
+                        } else {
+                            System.out.println("Input 1 to enter another number, 2 to convert your input to Binary, 3 to convert your input to Morse, or 4 to quit the program. ");
+                        }
+                    }
                 } else {
                     System.out.println("Input 1 for Binary and 2 for Octal. ");
                 }
