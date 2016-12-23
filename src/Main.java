@@ -12,7 +12,7 @@ public class Main {
         return input;
     }
 
-    public static int binaryOrMorseOrOctal() {
+    public static int binaryOrOctalOrMorse() {
         System.out.print("Convert to Binary(1), Octal(2), or Morse(3)? ");
         return scan.nextInt();
     }
@@ -107,7 +107,7 @@ public class Main {
             if (input == 69)
                 System.out.println("Haha nice.");
             while (control != 1 && control != 2 && control != 3) {
-                control = binaryOrMorseOrOctal();
+                control = binaryOrOctalOrMorse();
                 if (control == 1) {
                     convertToBinary(input);
                     System.out.print("Enter another number(1), convert to Octal(2), convert to Morse(3), or quit(4)? ");
@@ -316,7 +316,7 @@ public class Main {
                         }
                     }
                 } else {
-                    System.out.println("Input 1 for Binary and 2 for Octal. ");
+                    System.out.print("Input 1 for Binary, 2 for Octal, and 3 for Morse. ");
                 }
             }
         }
